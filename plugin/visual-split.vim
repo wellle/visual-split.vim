@@ -41,10 +41,15 @@ command! -range VSSplitBelow call <SID>split("below", <line1>, <line2>)
 " functions execute wincmds
 function! s:resize(line1, line2)
     execute (a:line2 - a:line1 + 1) . "wincmd _"
-    normal! zt
+    call s:scroll(a:line1)
 endfunction
 
 function! s:split(position, line1, line2)
     execute a:position . (a:line2 - a:line1 + 1) . "wincmd s"
+    call s:scroll(a:line1)
+endfunction
+
+function! s:scroll(line)
+    call cursor(a:line, 0)
     normal! zt
 endfunction
