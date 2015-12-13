@@ -91,3 +91,35 @@ pending mode. So this also works:
 ```
 <C-W>gssip
 ```
+
+## Installation
+
+Use your favorite plugin manager.
+
+- [NeoBundle](https://github.com/Shougo/neobundle.vim)
+
+    ```vim
+    NeoBundle 'wellle/visual-split.vim'
+    ```
+
+- [Vundle](https://github.com/gmarik/Vundle.vim)
+
+    ```vim
+    Bundle 'wellle/visual-split.vim'
+    ```
+
+- [Pathogen](https://github.com/tpope/vim-pathogen)
+
+    ```sh
+    git clone git://github.com/wellle/visual-split.vim.git ~/.vim/bundle/visual-split.vim
+    ```
+
+## What's next?
+
+This plugin was written in an afternoon to fill a personal need. I might add
+related functionality in the future that I consider useful and related
+additions. If you like this plugin and want more of it, please open an issue
+and let me know what you would like to see.
+
+Especially suggestions for better command names or more concise mappings would
+be very appreciated.
