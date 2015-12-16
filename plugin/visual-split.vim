@@ -50,6 +50,9 @@ function! s:split(position, line1, line2)
 endfunction
 
 function! s:scroll(line)
+    let scrolloff = &scrolloff
+    let &scrolloff = 0
     call cursor(a:line, 0)
-    normal! zt
+    normal! ztM
+    let &scrolloff=scrolloff
 endfunction
