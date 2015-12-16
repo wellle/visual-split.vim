@@ -113,6 +113,12 @@ Use your favorite plugin manager.
     ```sh
     git clone git://github.com/wellle/visual-split.vim.git ~/.vim/bundle/visual-split.vim
     ```
+    
+- [Vim-plug](https://github.com/junegunn/vim-plug)
+
+    ```vim
+    Plug 'wellle/visual-split.vim'
+    ```
 
 ## What's next?
 
