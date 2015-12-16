@@ -48,6 +48,7 @@ endfunction
 function! s:split(position, line1, line2)
     execute a:position . (a:line2 - a:line1 + 1) . "wincmd s"
     call s:scroll(a:line1)
+    wincmd p
 endfunction
 
 function! s:scroll(line)
