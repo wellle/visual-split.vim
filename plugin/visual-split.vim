@@ -1,8 +1,9 @@
 " normal mode mappings set operator functions
-nnoremap <C-W>gr  :<C-u>set operatorfunc=<SID>opgr<CR>g@
-nnoremap <C-W>gss :<C-u>set operatorfunc=<SID>opgss<CR>g@
-nnoremap <C-W>gsa :<C-u>set operatorfunc=<SID>opgsa<CR>g@
-nnoremap <C-W>gsb :<C-u>set operatorfunc=<SID>opgsb<CR>g@
+" TODO: make these silent?
+nnoremap <silent> <C-W>gr  :<C-u>set operatorfunc=<SID>opgr<CR>g@
+nnoremap <silent> <C-W>gss :<C-u>set operatorfunc=<SID>opgss<CR>g@
+nnoremap <silent> <C-W>gsa :<C-u>set operatorfunc=<SID>opgsa<CR>g@
+nnoremap <silent> <C-W>gsb :<C-u>set operatorfunc=<SID>opgsb<CR>g@
 
 " operator functions trigger visual mappings
 function! s:opgr(type, ...)
@@ -27,10 +28,10 @@ function! s:op(trigger)
 endfunction
 
 " visual mappings execute commands
-xnoremap <C-W>gr  :VSResize<CR>
-xnoremap <C-W>gss :VSSplit<CR>
-xnoremap <C-W>gsa :VSSplitAbove<CR>
-xnoremap <C-W>gsb :VSSplitBelow<CR>
+xnoremap <silent> <C-W>gr  :VSResize<CR>
+xnoremap <silent> <C-W>gss :VSSplit<CR>
+xnoremap <silent> <C-W>gsa :VSSplitAbove<CR>
+xnoremap <silent> <C-W>gsb :VSSplitBelow<CR>
 
 " commands call functions
 command! -range VSResize     call <SID>resize(<line1>, <line2>)
