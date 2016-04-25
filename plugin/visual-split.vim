@@ -41,6 +41,10 @@ command! -range VSSplitBelow call <SID>split("below", <line1>, <line2>)
 
 " functions execute wincmds
 function! s:resize(line1, line2)
+    if s:single()
+        return
+    endif
+
     execute (a:line2 - a:line1 + 1) . "wincmd _"
     call s:scroll(a:line1)
 endfunction
@@ -57,4 +61,23 @@ function! s:scroll(line)
     call cursor(a:line, 0)
     normal! ztM
     let &scrolloff=scrolloff
+endfunction
+
+function! s:single()
+    " remember original window
+    let winnr = winnr()
+
+    wincmd k " try to move up
+    if winnr() != winnr " found window above
+        wincmd p " move back
+        return 0
+    endif
+
+    wincmd j " try to move down
+    if winnr() != winnr " found window below
+        wincmd p " move back
+        return 0
+    endif
+
+    return 1
 endfunction
