@@ -45,14 +45,31 @@ function! s:resize(line1, line2)
         return
     endif
 
-    execute (a:line2 - a:line1 + 1) . "wincmd _"
+    execute s:lines_between(a:line1, a:line2) . "wincmd _"
     call s:scroll(a:line1)
 endfunction
 
 function! s:split(position, line1, line2)
-    execute a:position . (a:line2 - a:line1 + 1) . "wincmd s"
+    execute a:position . s:lines_between(a:line1, a:line2) . "wincmd s"
     call s:scroll(a:line1)
     wincmd p
+endfunction
+
+function! s:lines_between(line1, line2)
+    if &wrap
+        " Calculate the number of visibly selected lines, which may be more
+        " than the number of actual selected lines.
+        call cursor(a:line1, 0)
+        let l:visual_lines = 0
+        while line('.') <= a:line2
+            normal! gj
+            let l:visual_lines += 1
+        endwhile
+        return l:visual_lines
+    else
+        " The number of selected lines is a simple calculation.
+        return a:line2 - a:line1 + 1
+    endif
 endfunction
 
 function! s:scroll(line)
