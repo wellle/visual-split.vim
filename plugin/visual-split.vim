@@ -59,17 +59,21 @@ function! s:lines_between(line1, line2)
     if &wrap
         " Calculate the number of visibly selected lines, which may be more
         " than the number of actual selected lines.
-        call cursor(a:line1, 0)
-        let l:visual_lines = 0
-        while line('.') <= a:line2
-            normal! gj
-            let l:visual_lines += 1
-        endwhile
-        return l:visual_lines
+        return s:visual_lines_between(a:line1, a:line2)
     else
         " The number of selected lines is a simple calculation.
         return a:line2 - a:line1 + 1
     endif
+endfunction
+
+function! s:visual_lines_between(line1, line2)
+    call cursor(a:line1, 0)
+    let l:visual_lines = 0
+    while line('.') <= a:line2
+        normal! gj
+        let l:visual_lines += 1
+    endwhile
+    return l:visual_lines
 endfunction
 
 function! s:scroll(line)
