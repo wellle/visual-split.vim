@@ -68,11 +68,26 @@ endfunction
 
 function! s:visual_lines_between(line1, line2)
     call cursor(a:line1, 0)
+
     let l:visual_lines = 0
+    let l:previous_line = line('.')
+    let l:previous_col = col('.')
+
     while line('.') <= a:line2
         normal! gj
         let l:visual_lines += 1
+
+        if line('.') == l:previous_line && col('.') == l:previous_col
+            " We haven't moved from our previous position, so must be on the
+            " last visual line. We need to break out now since we're never
+            " going to reach a:line2 and would loop indefinitely.
+            break
+        endif
+
+        let l:previous_line = line('.')
+        let l:previous_col = col('.')
     endwhile
+
     return l:visual_lines
 endfunction
 
