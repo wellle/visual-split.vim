@@ -73,7 +73,10 @@ function! s:visual_lines_between(line1, line2)
     let l:previous_line = line('.')
     let l:previous_col = col('.')
 
-    while line('.') <= a:line2
+    " Count lines until reach a:line2, or have counted up to lines that can be
+    " displayed in this Vim instance (no point counting beyond this as can't
+    " resize window larger than this, and can seriously harm performance).
+    while line('.') <= a:line2 && l:visual_lines < &lines
         normal! gj
         let l:visual_lines += 1
 
