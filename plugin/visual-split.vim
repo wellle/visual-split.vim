@@ -91,6 +91,9 @@ function! s:visual_lines_between(line1, line2)
         let l:previous_col = col('.')
     endwhile
 
+    " Move to back to first row and column of selection.
+    call cursor(a:line1, 1)
+
     return l:visual_lines
 endfunction
 
