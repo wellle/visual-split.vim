@@ -45,14 +45,56 @@ function! s:resize(line1, line2)
         return
     endif
 
-    execute (a:line2 - a:line1 + 1) . "wincmd _"
+    execute s:lines_between(a:line1, a:line2) . "wincmd _"
     call s:scroll(a:line1)
 endfunction
 
 function! s:split(position, line1, line2)
-    execute a:position . (a:line2 - a:line1 + 1) . "wincmd s"
+    execute a:position . s:lines_between(a:line1, a:line2) . "wincmd s"
     call s:scroll(a:line1)
     wincmd p
+endfunction
+
+function! s:lines_between(line1, line2)
+    if &wrap
+        " Calculate the number of visibly selected lines, which may be more
+        " than the number of actual selected lines.
+        return s:visual_lines_between(a:line1, a:line2)
+    else
+        " The number of selected lines is a simple calculation.
+        return a:line2 - a:line1 + 1
+    endif
+endfunction
+
+function! s:visual_lines_between(line1, line2)
+    call cursor(a:line1, 0)
+
+    let l:visual_lines = 0
+    let l:previous_line = line('.')
+    let l:previous_col = col('.')
+
+    " Count lines until reach a:line2, or have counted up to lines that can be
+    " displayed in this Vim instance (no point counting beyond this as can't
+    " resize window larger than this, and can seriously harm performance).
+    while line('.') <= a:line2 && l:visual_lines < &lines
+        normal! gj
+        let l:visual_lines += 1
+
+        if line('.') == l:previous_line && col('.') == l:previous_col
+            " We haven't moved from our previous position, so must be on the
+            " last visual line. We need to break out now since we're never
+            " going to reach a:line2 and would loop indefinitely.
+            break
+        endif
+
+        let l:previous_line = line('.')
+        let l:previous_col = col('.')
+    endwhile
+
+    " Move to back to first row and column of selection.
+    call cursor(a:line1, 1)
+
+    return l:visual_lines
 endfunction
 
 function! s:scroll(line)
