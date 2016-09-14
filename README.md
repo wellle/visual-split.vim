@@ -63,6 +63,7 @@ is only one way of many:
 [split]:  https://raw.githubusercontent.com/wellle/images/master/visual-split-split.png
 
 ### Mappings
+Mappings **will not overwrite** your existing mappings.
 
 For the most common use case of working on visual selections there are some
 visual mode mappings provided:
@@ -92,8 +93,26 @@ pending mode. So this also works:
 <C-W>gssip
 ```
 
-## Installation
+### Remapping
+For easier remapping, `<Plug>` mappings are provided:
 
+Visual-mode:
+```vim
+<Plug>(Visual-Split-VSResize)
+<Plug>(Visual-Split-VSSplit)
+<Plug>(Visual-Split-VSSplitAbove)
+<Plug>(Visual-Split-VSSplitBelow)
+```
+
+Operator-pending mode:
+```vim
+<Plug>(Visual-Split-Resize)
+<Plug>(Visual-Split-Split)
+<Plug>(Visual-Split-SplitAbove)
+<Plug>(Visual-Split-SplitBelow)
+```
+
+## Installation
 Use your favorite plugin manager.
 
 - [NeoBundle](https://github.com/Shougo/neobundle.vim)
