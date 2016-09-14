@@ -1,11 +1,11 @@
-" normal mode mappings set operator functions
-" TODO: make these silent?
+" provide <Plug> mappings for easy remapping
 nnoremap <silent> <Plug>(Visual-Split-Resize)     :<C-u>set operatorfunc=<SID>opgr<CR>g@
 nnoremap <silent> <Plug>(Visual-Split-Split)      :<C-u>set operatorfunc=<SID>opgss<CR>g@
 nnoremap <silent> <Plug>(Visual-Split-SplitAbove) :<C-u>set operatorfunc=<SID>opgsa<CR>g@
 nnoremap <silent> <Plug>(Visual-Split-SplitBelow) :<C-u>set operatorfunc=<SID>opgsb<CR>g@
 
-" provide <Plug> mappings for easy remapping
+" normal mode mappings set operator functions
+" TODO: make these silent?
 silent! nmap <unique> <C-W>gr  <Plug>(Visual-Split-Resize)
 silent! nmap <unique> <C-W>gss <Plug>(Visual-Split-Split)
 silent! nmap <unique> <C-W>gsa <Plug>(Visual-Split-SplitAbove)
@@ -33,13 +33,13 @@ function! s:op(trigger)
     silent execute "normal \<C-W>" . a:trigger
 endfunction
 
-" visual mappings execute commands
+" provide <Plug> mappings for easy remapping
 xnoremap <silent> <Plug>(Visual-Split-VSResize)     :VSResize<CR>
 xnoremap <silent> <Plug>(Visual-Split-VSSplit)      :VSSplit<CR>
 xnoremap <silent> <Plug>(Visual-Split-VSSplitAbove) :VSSplitAbove<CR>
 xnoremap <silent> <Plug>(Visual-Split-VSSplitBelow) :VSSplitBelow<CR>
 
-" provide <Plug> mappings for easy remapping
+" visual mappings execute commands
 silent! xmap <unique> <C-W>gr  <Plug>(Visual-Split-VSResize)
 silent! xmap <unique> <C-W>gss <Plug>(Visual-Split-VSSplit)
 silent! xmap <unique> <C-W>gsa <Plug>(Visual-Split-VSSplitAbove)
