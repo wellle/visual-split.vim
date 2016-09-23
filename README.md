@@ -63,7 +63,8 @@ is only one way of many:
 [split]:  https://raw.githubusercontent.com/wellle/images/master/visual-split-split.png
 
 ### Mappings
-Mappings **will not overwrite** your existing mappings.
+
+Mappings will not overwrite your existing mappings.
 
 For the most common use case of working on visual selections there are some
 visual mode mappings provided:
@@ -94,22 +95,23 @@ pending mode. So this also works:
 ```
 
 ### Remapping
-For easier remapping, `<Plug>` mappings are provided:
+For easier remapping, `<Plug>` mappings are provided. Change the key sequences
+below and put them into your vimrc:
 
 Visual-mode:
 ```vim
-<Plug>(Visual-Split-VSResize)
-<Plug>(Visual-Split-VSSplit)
-<Plug>(Visual-Split-VSSplitAbove)
-<Plug>(Visual-Split-VSSplitBelow)
+xmap <C-W>gr  <Plug>(Visual-Split-VSResize)
+xmap <C-W>gss <Plug>(Visual-Split-VSSplit)
+xmap <C-W>gsa <Plug>(Visual-Split-VSSplitAbove)
+xmap <C-W>gsb <Plug>(Visual-Split-VSSplitBelow)
 ```
 
 Operator-pending mode:
 ```vim
-<Plug>(Visual-Split-Resize)
-<Plug>(Visual-Split-Split)
-<Plug>(Visual-Split-SplitAbove)
-<Plug>(Visual-Split-SplitBelow)
+nmap <C-W>gr  <Plug>(Visual-Split-Resize)
+nmap <C-W>gss <Plug>(Visual-Split-Split)
+nmap <C-W>gsa <Plug>(Visual-Split-SplitAbove)
+nmap <C-W>gsb <Plug>(Visual-Split-SplitBelow)
 ```
 
 ## Installation
