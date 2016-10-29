@@ -117,29 +117,34 @@ nmap <C-W>gsb <Plug>(Visual-Split-SplitBelow)
 ## Installation
 Use your favorite plugin manager.
 
-- [NeoBundle](https://github.com/Shougo/neobundle.vim)
+- [NeoBundle][neobundle]
 
     ```vim
     NeoBundle 'wellle/visual-split.vim'
     ```
 
-- [Vundle](https://github.com/gmarik/Vundle.vim)
+- [Vundle][vundle]
 
     ```vim
     Bundle 'wellle/visual-split.vim'
     ```
 
-- [Pathogen](https://github.com/tpope/vim-pathogen)
-
-    ```sh
-    git clone git://github.com/wellle/visual-split.vim.git ~/.vim/bundle/visual-split.vim
-    ```
-    
-- [Vim-plug](https://github.com/junegunn/vim-plug)
+- [Vim-plug][vim-plug]
 
     ```vim
     Plug 'wellle/visual-split.vim'
     ```
+
+- [Pathogen][pathogen]
+
+    ```sh
+    git clone git://github.com/wellle/visual-split.vim.git ~/.vim/bundle/visual-split.vim
+    ```
+
+[neobundle]: https://github.com/Shougo/neobundle.vim
+[vundle]: https://github.com/gmarik/vundle
+[vim-plug]: https://github.com/junegunn/vim-plug
+[pathogen]: https://github.com/tpope/vim-pathogen
 
 ## What's next?
 
