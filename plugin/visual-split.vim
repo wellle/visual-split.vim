@@ -118,20 +118,35 @@ function! s:scroll(line)
 endfunction
 
 function! s:single()
+    " Remember current previous window, as will be overwritten by process of
+    " determining if this is a singular window and we will need to reset it.
+    wincmd p
+    let previous_winnr = winnr()
+    wincmd p
+
     " remember original window
     let winnr = winnr()
 
     wincmd k " try to move up
     if winnr() != winnr " found window above
-        wincmd p " move back
+        wincmd p " Move back to original window.
+        call s:reset_previous_window(previous_winnr)
         return 0
     endif
 
     wincmd j " try to move down
     if winnr() != winnr " found window below
-        wincmd p " move back
+        wincmd p " Move back to original window.
+        call s:reset_previous_window(previous_winnr)
         return 0
     endif
 
     return 1
+endfunction
+
+function! s:reset_previous_window(previous_winnr)
+    " Switch to remembered window and back again to reset previous window to
+    " what it was before we overwrote it.
+    execute a:previous_winnr.'wincmd w'
+    wincmd p
 endfunction
